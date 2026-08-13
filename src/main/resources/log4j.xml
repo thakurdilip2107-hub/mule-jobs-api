@@ -10,7 +10,7 @@
     <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
         <param name="Target" value="System.out"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d %-5p [%t] %c - %m%n"/>
+            <PatternLayout pattern="%d %-5p [%t] %c - %m%n"/>
         </layout>
     </appender>
 
@@ -20,7 +20,7 @@
         <param name="MaxFileSize"    value="20MB"/>
         <param name="MaxBackupIndex" value="20"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d{ISO8601} %-5level [%thread] %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%d{ISO8601} %-5level [%thread] %logger{36} - %msg%n"/>
         </layout>
     </appender>
 
