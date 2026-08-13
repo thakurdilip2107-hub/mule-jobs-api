@@ -4,7 +4,7 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
     <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
-            <PatternLayout pattern="%d %-5p [%t] %c - %m%n"/>
+            <PatternLayout pattern="%d{ISO8601} %-5level [%thread] %logger{36} - %msg%n"/>
         </layout>
     </appender>
     <appender name="JOBS_FILE" class="org.apache.log4j.RollingFileAppender">
