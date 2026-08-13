@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<!--
+  mule-jobs-api | default-branch: master | SCENARIO: MIXED — 1 old + 1 already-new
+  Expected: SUCCESS — only old-pattern appender replaced; new one left unchanged
+-->
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!-- OLD pattern — needs migration -->
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%t] %c - %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- NEW pattern — must NOT be changed -->
+    <appender name="JOBS_FILE" class="org.apache.log4j.RollingFileAppender">
+        <param name="File"           value="${app.home}/logs/mule-jobs-api.log"/>
+        <param name="MaxFileSize"    value="20MB"/>
+        <param name="MaxBackupIndex" value="20"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} %-5level [%thread] %logger{36} - %msg%n"/>
+        </layout>
+    </appender>
+
+    <root>
+        <priority value="INFO"/>
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="JOBS_FILE"/>
+    </root>
+</log4j:configuration>
